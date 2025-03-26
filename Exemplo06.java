@@ -64,7 +64,7 @@ public class Exemplo06 {
         System.out.print("\nDigite uma nota a ser pesquisada: ");
         nota = input.nextDouble();
         while (nota >= 0.0) {
-            pos = busca(notas, nota);
+            pos = buscaMelhorada(notas, nota);
             if (pos != -1) {
                 System.out.println("A nota " + nota +
                         " foi encontrada na " + (pos + 1) + "ª posição");
@@ -75,13 +75,16 @@ public class Exemplo06 {
             nota = input.nextDouble();
         }
     }
-
-    public static int busca(double[] v, double x) {
-        for (int i = 0; i < v.length; i++) {
+    public static int buscaMelhorada(double[] v, double x) {
+        int i = 0;
+        
+        while (i < v.length && v[i] <= x) {
             if (v[i] == x) {
-                return i;
+                return i; 
             }
+            i++;
         }
-        return -1;
+        
+        return -1; 
     }
-}
+    }
