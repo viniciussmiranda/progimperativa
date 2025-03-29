@@ -87,4 +87,30 @@ public class Exemplo06 {
         
         return -1; 
     }
+
+    public static int pesquisaBinaria(int[] v, int x) {
+        int inicio = 0, fim = v.length - 1, meio;
+
+        while (inicio <= fim) {
+            meio = (inicio + fim) / 2;
+            if (x == v[meio]) {
+                return meio; 
+            } else if (x < v[meio]) {
+                fim = meio - 1; 
+            } else {
+                inicio = meio + 1; 
+            }
+        }
+
+        return -1;
     }
+
+    public static boolean estaOrdenado(double[] v) {
+        for (int i = 0; i < v.length - 1; i++) { 
+            if (v[i] > v[i + 1]) {
+                return false; 
+            }
+        }
+        return true; 
+    }
+}
