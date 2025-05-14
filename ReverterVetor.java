@@ -24,33 +24,20 @@ public class ReverterVetor {
         System.out.println();
     }
 
+    public static boolean validarFibonacci(int[] v, int n) {
+        int penult = 0, ultima = 1, atual;
+        System.out.print("0 1");
+        for (int i = 0; i < n; i += 1) {
+            atual = penult + ultima;
+            System.out.print(atual + " ");
 
-    public static boolean temFibonacci(int[] v, int n) {
-        for (int i = 0; i <= n - 3; i++) {
-            int a = v[i];
-            int b = v[i + 1];
+            penult = ultima;
+            ultima = atual;
 
-            if (!inicioValido(a, b)) continue;
 
-            int count = 2;
-            int j = i + 2;
-
-            while (j < n && v[j] == a + b) {
-                int c = a + b;
-                a = b;
-                b = c;
-                count++;
-                j++;
-            }
-
-            if (count >= 3) return true;
         }
 
-        return false;
-    }
-
-    public static boolean inicioValido(int a, int b) {
-        return (a == 1 && b == 1) || (a + b >= 0); 
+        return true;
     }
 
     public static void main(String[] args) {
@@ -70,11 +57,8 @@ public class ReverterVetor {
         System.out.print("vetor invertido: ");
         imprimir(vetor, n);
 
-        if (temFibonacci(vetor, n)) {
-            System.out.println("o vetor contém uma subsequência da sequência de Fibonacci com pelo menos 3 números consecutivos.");
-        } else {
-            System.out.println("o vetor NÃO contém uma subsequência da sequência de Fibonacci com pelo menos 3 números consecutivos.");
-        }
+        // Chama a função validarFibonacci
+        validarFibonacci(vetor, n);
 
         sc.close();
     }
